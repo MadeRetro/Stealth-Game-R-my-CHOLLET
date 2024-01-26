@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Menus\MenuManager.cs" />
     <Compile Include="Assets\Scripts\SpawnerScript\ItemSpawnerText.cs" />
     <Compile Include="Assets\Scripts\Modifier\MunitionsScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyMov.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\Scripts\Player\Camera\CameraShake.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

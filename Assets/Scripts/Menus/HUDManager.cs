@@ -1,8 +1,10 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class HUDManager : MonoBehaviour
 {
@@ -29,7 +31,7 @@ public class HUDManager : MonoBehaviour
     private bool isGamePaused;
     [SerializeField] private InputActionReference pause;
 
-    [SerializeField] private TextMeshProUGUI scoreTxt, waveTxt, killsTxt, bestScoreTxt, finalScoreTxt, finalWaveTxt, finalKillsTxt, finalBestScoreTxt;
+    [SerializeField] private TextMeshProUGUI scoreTxt, waveTxt, killsTxt, bestScoreTxt, finalScoreTxt, finalWaveTxt, finalKillsTxt, finalBestScoreTxt, backstabText, spottedText;
 
     [SerializeField] private Button quitBtn, resumeBtn, retryBtn, quitAfterDeathBtn;
 
@@ -46,6 +48,20 @@ public class HUDManager : MonoBehaviour
         pauseMenuGo.SetActive(false);
         deadMenuGo.SetActive(false);
         Time.timeScale = 1f;
+
+        // Ensure the Text component is assigned
+        if (backstabText == null)
+        {
+            Debug.LogError("BackstabText component not assigned!");
+            return;
+        }
+
+        // Hide the text initially
+        backstabText.enabled = false;
+
+        spottedText.enabled = false;
+
+
     }
 
     private void OnEnable()
@@ -183,4 +199,41 @@ public class HUDManager : MonoBehaviour
         bestScoreTxt.SetText(score + "");
         finalBestScoreTxt.SetText(score + "");
     }
+
+
+
+    public void ShowBackstabTxt()
+    {
+        // Display the backstab text
+        backstabText.enabled = true;
+        
+              
+    }
+
+    public void HideBackstabTxt()
+    {
+
+        // Hide the text again
+        backstabText.enabled = false;
+    }
+
+    public void ShowspottedTxt()
+    {
+       
+        spottedText.enabled = true;
+
+
+    }
+
+
+    public void HidespottedTxt()
+    {
+        
+        spottedText.enabled = false;
+
+
+    }
+
+
+
 }

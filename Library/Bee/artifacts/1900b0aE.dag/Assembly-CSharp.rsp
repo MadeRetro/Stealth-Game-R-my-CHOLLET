@@ -364,6 +364,7 @@
 "Assets/Scripts/Backstab.cs"
 "Assets/Scripts/DestroyableObject.cs"
 "Assets/Scripts/EnemyBehavior.cs"
+"Assets/Scripts/EnemyMov.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Menus/ASyncLoader.cs"
 "Assets/Scripts/Menus/AudioManager.cs"
