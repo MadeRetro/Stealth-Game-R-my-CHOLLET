@@ -15,6 +15,10 @@ public class BACKK : MonoBehaviour
     public float distancemin = 2f;
     public float distancevue = 5f;
     public float anglemax = 10f;
+    
+
+
+
     void Update()
     {
         backstabTextDisplay.HideBackstabTxt();
@@ -78,7 +82,7 @@ public class BACKK : MonoBehaviour
             // cross.z doit être positif
             bool isBehind = crossProduct.z > -0.05f;
             bool isFront = crossProduct.z < -0.05f;
-
+            bool spotted = false;
 
 
 
@@ -87,11 +91,12 @@ public class BACKK : MonoBehaviour
             if (distance < distancevue && anglenemy < 30f)
             {
                 backstabTextDisplay.ShowspottedTxt();
+                spotted = true;
             }
 
 
 
-            else if (dotProduct > 0.8f && distance < distancemin && angle < anglemin && isBehind)
+            else if (dotProduct > 0.8f && distance < distancemin && angle < anglemin && isBehind && spotted == false)
             {
                 backstabTextDisplay.ShowBackstabTxt();
 
