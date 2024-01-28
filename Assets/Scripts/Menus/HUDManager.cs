@@ -49,14 +49,14 @@ public class HUDManager : MonoBehaviour
         deadMenuGo.SetActive(false);
         Time.timeScale = 1f;
 
-        // Ensure the Text component is assigned
+        
         if (backstabText == null)
         {
             Debug.LogError("BackstabText component not assigned!");
             return;
         }
 
-        // Hide the text initially
+        
         backstabText.enabled = false;
 
         spottedText.enabled = false;
@@ -171,7 +171,7 @@ public class HUDManager : MonoBehaviour
         uziGo.SetActive(uzi);
     }
 
-    //textes en appuyant sur pause
+    // Textes en appuyant sur pause
     public void MunInfos(bool info)
     {
         munGo.SetActive(info);
@@ -204,7 +204,7 @@ public class HUDManager : MonoBehaviour
 
     public void ShowBackstabTxt()
     {
-        // Display the backstab text
+        
         backstabText.enabled = true;
         
               
@@ -213,7 +213,7 @@ public class HUDManager : MonoBehaviour
     public void HideBackstabTxt()
     {
 
-        // Hide the text again
+        
         backstabText.enabled = false;
     }
 

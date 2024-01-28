@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class BACKK : MonoBehaviour
 {
-    public Transform playerTransform; // Référence au transform du joueur
-    public string enemyTag = "Enemy"; // Tag pour les ennemis
+    public Transform playerTransform; 
+    public string enemyTag = "Enemy";
 
     public HUDManager backstabTextDisplay;
  
 
-    public Animator enemyAnimator; // Référence à l'Animator de l'ennemi
+
 
     public float anglemin = 10f;
     public float distancemin = 2f;
@@ -49,22 +49,22 @@ public class BACKK : MonoBehaviour
 
 
 
-        // Récupérer tous les ennemis avec le tag spécifié
+        // Repérer tous les ennemis
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
         foreach (GameObject enemyObject in enemies)
         {
             Transform enemyTransform = enemyObject.transform;
 
-            // Vecteur de différence entre les positions du joueur et de l'ennemi
+            // Différence entre les positions du joueur et de l'ennemi
             Vector3 playerToEnemy = enemyTransform.position - playerTransform.position;
             Vector3 EnemyToPlayer = playerTransform.position - enemyTransform.position;
 
-            // Calcul de l'angle entre le vecteur de direction du joueur et le vecteur joueur-vers-ennemi
+            // Angle entre le vecteur de direction du joueur et le vecteur joueur --> ennemi
             float angle = Vector3.Angle(playerTransform.forward, playerToEnemy);
             float anglenemy = Vector3.Angle(enemyTransform.forward, EnemyToPlayer);
 
-            // Calcul de la distance entre le joueur et l'ennemi
+            // Distance entre le joueur et l'ennemi
             float distance = playerToEnemy.magnitude;
 
 
@@ -82,31 +82,33 @@ public class BACKK : MonoBehaviour
             // cross.z doit être positif
             bool isBehind = crossProduct.z > -0.05f;
             bool isFront = crossProduct.z < -0.05f;
-            bool spotted = false;
+            
 
 
 
 
-
+            // Conditions pour être spotted
             if (distance < distancevue && anglenemy < 30f)
             {
                 backstabTextDisplay.ShowspottedTxt();
-                spotted = true;
+                backstabTextDisplay.HideBackstabTxt();
+
             }
 
 
 
-            else if (dotProduct > 0.8f && distance < distancemin && angle < anglemin && isBehind && spotted == false)
+            if (dotProduct > 0.8f && distance < distancemin && angle < anglemin && isBehind )
             {
                 backstabTextDisplay.ShowBackstabTxt();
+                backstabTextDisplay.HidespottedTxt();
 
-                // Find the nearest enemy
+                // Ennemi le plus proche
                 GameObject nearestEnemy = GetNearestEnemy();
 
-                // Check if the nearest enemy is within backstab range and can be backstabbed
+                
                 if (Input.GetMouseButtonDown(0))
                 {
-                    // Perform the backstab action (e.g., destroy the enemy)
+                    // KILL
                     Destroy(nearestEnemy);
                 }
 
